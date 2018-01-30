@@ -2,6 +2,10 @@ var mongoose = require('mongoose');
 var User = mongoose.model('User');
 
 module.exports = {
+    /**
+     * if user is found from database, send that user's information as json object 
+     * if user not found, create 
+     */
     loginReg: function(req, res){
         User.find({name:req.body.name}, function(err, users){
             if(users.length < 1){

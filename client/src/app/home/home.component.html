@@ -14,7 +14,7 @@
                     <p class="navbar-brand" href="/Home">{{ user }}'s Project</p>
                 </div>
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="/Home">Home</a></li>
+                    <li class="active"><a [routerLink]="['/Home']">Home</a></li>
                     <li><a href="/logout">Logout</a></li>
                 </ul>
             </div>
@@ -22,11 +22,6 @@
         <div class="page-header">
             <h1>Welcome, {{ user }}</h1>
         </div>
-
-        <div class="container">
-            <form>
-                <label for="name">Name: </label> <input type="text" name="name" id="name">
-            </form>
         </div>
     </div>
 </body>

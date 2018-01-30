@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private _mainService: MainService, private _router: Router) { 
     this.user = "";
+    this.bucket = { title: "", description: "", _tagged: "" };
     this._mainService.users.subscribe((usersArray) => {
       this.usersArray = usersArray;
     })
@@ -30,8 +31,11 @@ export class HomeComponent implements OnInit {
     })
   }
 
+  addToList(){
+
+  }
+
   ngOnInit() {
     this.checkUser();
   }
-
 }
