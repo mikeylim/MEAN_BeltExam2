@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+<body class="text-center">
+  <div class="jumbotron text-center">
+    <h1>Enter your Project Name Here!</h1> <br> <h2>Enter your name!</h2>
+  </div>
+  <div id="errorBox">
+    <div class="alert alert-danger text-center" *ngIf="name.invalid && (name.dirty || name.touched)">
+      <p *ngIf="name.errors.required">Name is required.</p>
+      <p *ngIf="(name.errors.minlength && !name.errors.required )">Name must be at least 2 characters long.</p>
+      <p *ngIf="name.errors.pattern">Name can't have space at the start or the end.</p>
+      <p *ngIf="name.errors.pattern">Name can only contain characters.</p>
+    </div>
+  </div>
+
+  <form #form="ngForm" (submit)="loginReg()"> 
+    <label for="name">Enter your name: </label> <input type="text" name="name" id="name" required minlength="2" [(ngModel)]="user.name" 
+    pattern="^[a-zA-Z]+(\s+[a-zA-Z]+)*$" #name="ngModel">
+    <input class="btn btn-success"type="submit" value="Login/Reg" [disabled]="form.invalid">
+  </form>
+</body>
+</html>
