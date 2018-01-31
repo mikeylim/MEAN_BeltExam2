@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="wrapper">
+    <h3>Hi, <span>{{ user }}</span>!</h3>  
+    <h4>Choose an answer for each of the questions and submit the test once done.</h4>
+    <h3>Good Luck!</h3>
+    
+    <div class="alert alert-danger text-center" *ngIf="(ans1?.invalid && (ans1?.dirty || ans1?.touched)) ||
+                                                       (ans2?.invalid && (ans2?.dirty || ans2?.touched)) ||
+                                                       (ans3?.invalid && (ans3?.dirty || ans3?.touched)) ">
+      <p *ngIf="ans1?.errors.required || ans2?.errors.required || ans3?.errors.required">Please answer all questions.</p>
+    </div>
+    <form #form="ngForm" (submit)="submitAnswers()">
+      <div class="questionBox">
+        <div *ngFor="let a of threeQuestions[0]?._answers">
+          <h4>1. {{ threeQuestions[0].content }}</h4>
+          <input type="radio" required [(ngModel)]="ans.ans1" name="ans1" [value]="a.fakeAnswer1"> {{ a.fakeAnswer1 }} <br>
+          <input type="radio" required [(ngModel)]="ans.ans1" name="ans1" [value]="a.fakeAnswer2"> {{ a.fakeAnswer2 }} <br>
+          <input type="radio" required [(ngModel)]="ans.ans1" name="ans1" [value]="a.correctAnswer"> {{ a.correctAnswer }} <br>
+        </div>
+      </div>
+      <div class="questionBox">
+        <div *ngFor="let a of threeQuestions[1]?._answers">
+          <h4>2. {{ threeQuestions[1].content }}</h4>
+          <input type="radio" required [(ngModel)]="ans.ans2" name="ans2" [value]="a.correctAnswer"> {{ a.correctAnswer }} <br>
+          <input type="radio" required [(ngModel)]="ans.ans2" name="ans2" [value]="a.fakeAnswer1"> {{ a.fakeAnswer1 }} <br>
+          <input type="radio" required [(ngModel)]="ans.ans2" name="ans2" [value]="a.fakeAnswer2"> {{ a.fakeAnswer2 }} <br>
+        </div>
+      </div>
+      <div class="questionBox">
+        <div *ngFor="let a of threeQuestions[2]?._answers">
+          <h4>3. {{ threeQuestions[2].content }}</h4>
+          <input type="radio" required [(ngModel)]="ans.ans3" name="ans3" [value]="a.fakeAnswer2"> {{ a.fakeAnswer2 }} <br>
+          <input type="radio" required [(ngModel)]="ans.ans3" name="ans3" [value]="a.correctAnswer"> {{ a.correctAnswer }} <br>
+          <input type="radio" required [(ngModel)]="ans.ans3" name="ans3" [value]="a.fakeAnswer1"> {{ a.fakeAnswer1 }} <br>
+        </div>
+      </div>
+      <div class="buttonBox">
+        <button type="button" [routerLink]="['/Home']" class="btn btn-warning">Cancel</button>
+        <input class="btn btn-success" [disabled]="form.invalid" type="submit" value="Submit">
+      </div>
+    </form>
+  </div>
+</body>
+</html>

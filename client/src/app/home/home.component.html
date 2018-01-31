@@ -7,22 +7,51 @@
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 </head>
 <body>
-    <div class="wrapper">
-        <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <p class="navbar-brand" href="/Home">{{ user }}'s Project</p>
-                </div>
-                <ul class="nav navbar-nav">
-                    <li class="active"><a [routerLink]="['/Home']">Home</a></li>
-                    <li><a href="/logout">Logout</a></li>
-                </ul>
-            </div>
-        </nav>
+    <div class="wrapper text-center">        
+        <a id="selected" [routerLink]="['/Home']">Home</a> | 
+        <a [routerLink]="['/new_question']">Add a Question</a> | 
+        <a id="logout" href="/logout">Logout</a>      
         <div class="page-header">
             <h1>Welcome, {{ user }}</h1>
         </div>
+        
+        <div>
+            <h4 class="alert alert-success" *ngIf="message.includes('100')">{{ message }}</h4>
+            <h4 class="alert alert-info" *ngIf="message.includes('66')">{{ message }}</h4>
+            <h4 class="alert alert-warning" *ngIf="message.includes('33')">{{ message }}</h4>
+            <h4 class="alert alert-danger" *ngIf="message.includes('Maybe')">{{ message }}</h4>
         </div>
+
+        <div class="playBox">
+            <button class="btn btn-primary btn-lg" [disabled]="!hasQuestion" [routerLink]="['/lets_play']">Play!</button>
+            <h4>Click the button to start the Trivia Game.</h4>
+        </div>
+        
+        <label id="search">Search: </label> <input type="text" [(ngModel)]="searchText" name="searchText">
+        <div class="chartBox">
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Score</th>
+                        <th scope="col">Percentage</th>
+                        <th scope="col">Played At</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ng-container *ngFor="let g of games | filter: searchText ">
+                        <tr>
+                            <td>{{ g.name }}</td> 
+                            <td>{{ g.score }} / 3</td>    
+                            <td>{{ g.percentage }}%</td>               
+                            <td>{{ g.createdAt | date:'short' }}</td>               
+                        </tr>
+                    </ng-container>
+                </tbody>
+            </table>
+        </div>
+        
+
     </div>
 </body>
 </html>

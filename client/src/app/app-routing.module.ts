@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginregComponent } from './loginreg/loginreg.component';
 import { HomeComponent } from './home/home.component';
+import { PlayComponent } from './play/play.component';
+import { QuestionComponent } from './question/question.component';
 
 const routes: Routes = [
   {
@@ -11,6 +13,14 @@ const routes: Routes = [
   {
     path: 'Home',
     component: HomeComponent
+  },
+  {
+    path: 'lets_play',
+    component: PlayComponent
+  },
+  {
+    path: 'new_question',
+    component: QuestionComponent
   }
 ];
 

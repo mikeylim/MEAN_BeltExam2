@@ -9,13 +9,19 @@ import { AppComponent } from './app.component';
 import { LoginregComponent } from './loginreg/loginreg.component';
 import { MainService } from './main.service';
 import { HomeComponent } from './home/home.component';
+import { PlayComponent } from './play/play.component';
+import { QuestionComponent } from './question/question.component';
+import { FilterPipe } from './filter.pipe'
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginregComponent,
-    HomeComponent
+    HomeComponent,
+    PlayComponent,
+    QuestionComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

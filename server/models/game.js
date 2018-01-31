@@ -1,9 +1,10 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var UserSchema = new Schema({
+var GameSchema = new Schema({
     name: String,
-    score: Number,    
+    score: Number,
+    percentage: Number,
 }, {timestamps: true, usePushEach: true})
 
-mongoose.model("User", UserSchema);
+mongoose.model("Game", GameSchema);

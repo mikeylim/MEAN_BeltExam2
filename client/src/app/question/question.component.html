@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="wrapper">
+    <a [routerLink]="['/Home']">Home</a> | <a id="selected" [routerLink]="['/new_question']">Add a Question</a> <br>
+
+    <h1>New Question</h1>
+
+    <div id="errorBox">
+      <div class="alert alert-danger text-center" *ngIf="(content.invalid && (content.dirty || content.touched))">
+        <p *ngIf="content.errors.required">Question is required.</p>
+        <p *ngIf="((content.errors.minlength) && !(content.errors.required))">Question must be at least 15 characters long.</p>        
+      </div>
+    </div>
+
+    <form #form="ngForm" (submit)="addQuestion()">
+      <label id="lblContent" for="content">Question: </label> <textarea name="content" minlength="15" id="content" cols="30" rows="10" [(ngModel)]="question.content" required #content="ngModel"></textarea> <br><br>
+      <label for="correctAnswer">Correct Answer: </label><input class="inputs" required type="text" name="correctAnswer" [(ngModel)]="question.correctAnswer" #correctAnswer="ngModel"> <br><br>
+      <label for="fakeAnswer1">Fake Answer 1: </label><input class="inputs" required type="text" name="fakeAnswer1" [(ngModel)]="question.fakeAnswer1" #fakeAnswer1="ngModel"> <br><br>
+      <label for="fakeAnswer2">Fake Answer 2: </label><input class="inputs" required type="text" name="fakeAnswer2" [(ngModel)]="question.fakeAnswer2" #fakeAnswer2="ngModel"> <br><br>
+      <button class="btn btn-warning" [routerLink]="['/Home']">Cancel</button>
+      <input class="btn btn-success" [disabled]="form.invalid" type="submit" value="Add Question">
+    </form>
+  </div>  
+</body>
+</html>

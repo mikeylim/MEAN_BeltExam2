@@ -1,0 +1,47 @@
+.wrapper{
+    margin: 0 auto;
+    width: 900px;
+    border: 3px solid black;   
+    text-align: center; 
+    padding: 20px;
+    background-color: rgb(238, 243, 245);
+}
+.playBox{
+    border: 3px solid black;
+    width: 500px;
+    height: 150px;
+    background: aquamarine;
+    text-align: center;
+    margin: 0 auto;
+    padding: 10px;
+}
+.btn{
+    width: 200px;
+    height: 60px;
+    border: 2px solid black;
+    border-radius: 25px;
+    margin-top: 20px;
+}
+table{
+    width: 650px;
+    margin: 0 auto;
+    border: 3px solid black;
+    /* overflow-y: scroll; */
+}
+.chartBox{
+    margin: 20px 0px;
+    height: 400px;
+    overflow-y: scroll;
+}
+th{
+    text-align: center;
+}
+#logout{
+    text-align: right;
+}
+#selected{
+    color: blue;
+}
+#search{
+    margin-top: 20px;
+}

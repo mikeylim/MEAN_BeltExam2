@@ -8,7 +8,7 @@
 </head>
 <body class="text-center">
   <div class="jumbotron text-center">
-    <h1>Bucket List</h1> <br> <h2>Enter your name!</h2>
+    <h1>Trivia Game!</h1> <br> <h2>Enter your name!</h2>
   </div>
   <div id="errorBox">
     <div class="alert alert-danger text-center" *ngIf="name.invalid && (name.dirty || name.touched)">
@@ -20,7 +20,7 @@
   </div>
 
   <form #form="ngForm" (submit)="loginReg()"> 
-    <label for="name">Enter your name: </label> <input type="text" name="name" id="name" required minlength="2" [(ngModel)]="user.name" 
+    <label for="name">Name: </label> <input type="text" name="name" id="name" required minlength="2" [(ngModel)]="user.name" 
     pattern="^[a-zA-Z]+(\s+[a-zA-Z]+)*$" #name="ngModel">
     <input class="btn btn-success"type="submit" value="Login/Reg" [disabled]="form.invalid">
   </form>
