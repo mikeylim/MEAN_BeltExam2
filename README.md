@@ -1,5 +1,5 @@
 # Trivia Game
-** Full MEAN Web Application which logs in user and lets user play the Trivia Game. User can add Trivia questions, answer the questions by 
+** Full MEAN stack Web Application which logs in user and lets user play the Trivia Game. User can add Trivia questions, answer the questions by 
 clicking the Play button and see logs of every game played. **
 
 > Using Angular 5 as Front-end framework, Node.js as run-time environment for server-side JavaScript code, Express.js for server-side framework and MongoDB as noSql database.
